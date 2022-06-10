@@ -1,6 +1,6 @@
-#Movie Ticketing App
+# Movie Ticketing App
 
-###Tech stack
+### Tech stack
 * Spring Framework (Boot, Data, MVC, Security, WebFlux, AOP)
 * Mockito, Junit
 * Maven
