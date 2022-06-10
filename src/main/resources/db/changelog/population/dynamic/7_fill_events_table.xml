@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="event"/>
+        <tableIsEmpty tableName="event"/>
+    </preConditions>
+
+    <changeSet id="fill-table-events" author="OlgaKorolko">
+        <insert tableName="event">
+            <column name="start_date_time" value="2022-01-23T23:00:00"/>
+            <column name="movie_id" value="1"/>
+            <column name="event_status" value="3"/>
+            <column name="movie_room_id" value="1"/>
+        </insert>
+        <insert tableName="event">
+            <column name="start_date_time" value="2022-03-23T12:00:00"/>
+            <column name="movie_id" value="2"/>
+            <column name="event_status" value="3"/>
+            <column name="movie_room_id" value="1"/>
+        </insert>
+        <insert tableName="event">
+            <column name="start_date_time" value="2022-06-01T09:45:00"/>
+            <column name="movie_id" value="4"/>
+            <column name="event_status" value="0"/>
+            <column name="movie_room_id" value="4"/>
+        </insert>
+        <insert tableName="event">
+            <column name="start_date_time" value="2022-05-06T23:10:00"/>
+            <column name="movie_id" value="4"/>
+            <column name="event_status" value="2"/>
+            <column name="movie_room_id" value="5"/>
+        </insert>
+        <insert tableName="event">
+            <column name="start_date_time" value="2022-04-23T16:30:00"/>
+            <column name="movie_id" value="3"/>
+            <column name="event_status" value="0"/>
+            <column name="movie_room_id" value="7"/>
+        </insert>
+        <insert tableName="event">
+            <column name="start_date_time" value="2022-01-28T02:30:00"/>
+            <column name="movie_id" value="1"/>
+            <column name="event_status" value="3"/>
+            <column name="movie_room_id" value="3"/>
+        </insert>
+        <insert tableName="event">
+            <column name="start_date_time" value="2022-12-02T11:15:00"/>
+            <column name="movie_id" value="4"/>
+            <column name="event_status" value="3"/>
+            <column name="movie_room_id" value="6"/>
+        </insert>
+        <insert tableName="event">
+            <column name="start_date_time" value="2022-01-23T23:00:00"/>
+            <column name="movie_id" value="3"/>
+            <column name="event_status" value="0"/>
+            <column name="movie_room_id" value="6"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

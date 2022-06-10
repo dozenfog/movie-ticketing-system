@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="city"/>
+        <tableIsEmpty tableName="city"/>
+    </preConditions>
+
+    <changeSet id="fill-table-cities" author="OlgaKorolko">
+        <insert tableName="city">
+            <column name="name" value="Abu Dhabi"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Amsterdam"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Athens"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Baku"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Prague"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Riga"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Rome"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Seoul"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Singapore"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Toronto"/>
+        </insert>
+        <insert tableName="city">
+            <column name="name" value="Washington D.C."/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

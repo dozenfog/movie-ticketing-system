@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="city"/>
+    </preConditions>
+
+    <changeSet id="create-cinemas-table" author="OlgaKorolko">
+        <createTable tableName="cinema">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(300)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_id" type="bigint">
+                <constraints foreignKeyName="fk_cinemas_cities" references="city(id)" nullable="false"/>
+            </column>
+            <column name="email" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(21)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint columnNames="email"
+                             constraintName="uc_cinema_email"
+                             tableName="cinema"/>
+
+        <addUniqueConstraint columnNames="name"
+                             constraintName="uc_cinema_name"
+                             tableName="cinema"/>
+    </changeSet>
+
+</databaseChangeLog>

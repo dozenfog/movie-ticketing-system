@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="user_category"/>
+        <tableExists tableName="city"/>
+    </preConditions>
+
+    <changeSet id="create-users-table" author="OlgaKorolko">
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="first_name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_name" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(21)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(200)"/>
+            <column name="city_id" type="bigint">
+                <constraints foreignKeyName="fk_users_cities" references="city(id)" nullable="false"/>
+            </column>
+            <column name="registration_date_time" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="date"/>
+            <column name="category_id" type="bigint">
+                <constraints foreignKeyName="fk_users_user_categories" references="user_category(id)" nullable="false"/>
+            </column>
+            <column name="role" type="int"/>
+        </createTable>
+
+        <addUniqueConstraint columnNames="user_name"
+                             constraintName="uc_users_user_name"
+                             tableName="users"/>
+
+        <addDefaultValue columnDataType="int"
+                         columnName="role"
+                         defaultValueNumeric="1"
+                         tableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>

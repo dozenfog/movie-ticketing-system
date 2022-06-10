@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="genre"/>
+        <tableIsEmpty tableName="genre"/>
+    </preConditions>
+
+    <changeSet id="fill-table-genres" author="OlgaKorolko">
+        <insert tableName="genre">
+            <column name="name" value="ACTION"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="FANTASY"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="HORROR"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="ANIMATION"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="DRAMA"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="COMEDY"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="SCIENCE_FICTION"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="THRILLER"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="ADVENTURE"/>
+        </insert>
+        <insert tableName="genre">
+            <column name="name" value="ROMANCE"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

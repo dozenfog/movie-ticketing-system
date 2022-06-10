@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="creation//1_create_cities_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//2_create_genres_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//3_create_room_types_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//4_create_user_categories_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//5_create_cinemas_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//6_create_movies_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//7_create_movies_genres_link_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//8_create_movie_rooms_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//9_create_seats_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//10_create_users_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//11_create_events_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//12_create_orders_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//13_create_tickets_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//14_create_weather_table.xml" relativeToChangelogFile="true"/>
+    <include file="creation//15_create_audit_table.xml" relativeToChangelogFile="true"/>
+    
+    <includeAll path="population//static" relativeToChangelogFile="true"/>
+    
+    <include file="population//dynamic//1_fill_cinemas_table.xml" relativeToChangelogFile="true"/>
+    <include file="population//dynamic//2_fill_movies_table.xml" relativeToChangelogFile="true"/>
+    <include file="population//dynamic//3_fill_movies_genres_link_table.xml" relativeToChangelogFile="true"/>
+    <include file="population//dynamic//4_fill_movie_rooms_table.xml" relativeToChangelogFile="true"/>
+    <include file="population//dynamic//5_fill_seats_table.xml" relativeToChangelogFile="true"/>
+    <include file="population//dynamic//6_fill_users_table.xml" relativeToChangelogFile="true"/>
+    <include file="population//dynamic//7_fill_events_table.xml" relativeToChangelogFile="true"/>
+    <include file="population//dynamic//8_fill_orders_table.xml" relativeToChangelogFile="true"/>
+    <include file="population//dynamic//9_fill_tickets_table.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

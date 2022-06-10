@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="users"/>
+        <tableIsEmpty tableName="users"/>
+    </preConditions>
+
+    <changeSet id="fill-table-users" author="OlgaKorolko">
+        <insert tableName="users">
+            <column name="first_name" value="anne"/>
+            <column name="last_name" value="smith"/>
+            <column name="user_name" value="anneSmith"/>
+            <column name="email" value="anne_smith45@hotmail.com"/>
+            <column name="phone" value="+375135153145"/>
+            <column name="password" value="$2a$10$yoZXL..K/YL59Q2rbhZ6mORSvS4Mm8Hw0v0KfosY.L93yaqpppZXS"/>
+            <column name="city_id" value="1"/>
+            <column name="registration_date_time" value="2021-07-23T19:21:56"/>
+            <column name="category_id" value="1"/>
+            <column name="role" value="1"/>
+        </insert>
+        <insert tableName="users">
+            <column name="first_name" value="andrew"/>
+            <column name="last_name" value="holden"/>
+            <column name="user_name" value="aholden"/>
+            <column name="email" value="nfcakljvna@gmail.com"/>
+            <column name="phone" value="476126471247"/>
+            <column name="password" value="$2a$10$GRI8jm0eT.7CmYZiAzkq8OKKUZT/z/jY2aKM/Slh8BEKWgbl50LPa"/>
+            <column name="city_id" value="4"/>
+            <column name="registration_date_time" value="2021-03-21T21:07:08"/>
+            <column name="category_id" value="2"/>
+            <column name="role" value="1"/>
+        </insert>
+        <insert tableName="users">
+            <column name="first_name" value="Kate"/>
+            <column name="last_name" value="Hudson"/>
+            <column name="user_name" value="kate_hud_33"/>
+            <column name="email" value="jdwae2jfcwe@yahoo.com"/>
+            <column name="phone" value="+14231723741"/>
+            <column name="password" value="$2a$10$qS8nhfFHGKfsYiTdvEOHquaqnK8iKqpswkmha20gTCgli82gACvea"/>
+            <column name="city_id" value="7"/>
+            <column name="registration_date_time" value="2021-01-09T03:21:23"/>
+            <column name="category_id" value="1"/>
+            <column name="role" value="0"/>
+        </insert>
+        <insert tableName="users">
+            <column name="first_name" value="Sam"/>
+            <column name="last_name" value="Havell"/>
+            <column name="user_name" value="fh83effue"/>
+            <column name="email" value="samhav6437@gmail.com"/>
+            <column name="phone" value="+9475604260"/>
+            <column name="password" value="$2a$10$xsxUIu6UveAQZuxMkc/b7ev.LgbhAU.MRPFYFg3lSK.tWSfYejm7u"/>
+            <column name="city_id" value="11"/>
+            <column name="registration_date_time" value="2021-10-20T09:08:23"/>
+            <column name="category_id" value="3"/>
+            <column name="role" value="1"/>
+        </insert>
+        <insert tableName="users">
+            <column name="first_name" value="Nate"/>
+            <column name="last_name" value="White"/>
+            <column name="user_name" value="nnnate"/>
+            <column name="email" value="vnhslkdfjvna@hotmail.com"/>
+            <column name="phone" value="073142171246"/>
+            <column name="password" value="$2a$10$9YUBGUTofXAkaZkrNpu4a.gOjgThTPmItkoZNlcB5I0ExqTS/bKO."/>
+            <column name="city_id" value="8"/>
+            <column name="registration_date_time" value="2021-12-23T23:01:03"/>
+            <column name="category_id" value="4"/>
+            <column name="role" value="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

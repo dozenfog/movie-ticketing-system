@@ -1,0 +1,17 @@
+package by.issoft.externalapi.weather.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Configuration
+public class WeatherConfig {
+    @Autowired
+    private WeatherProperties weatherProperties;
+
+    @Bean
+    public WebClient webClient() {
+        return WebClient.create(weatherProperties.getUrl());
+    }
+}

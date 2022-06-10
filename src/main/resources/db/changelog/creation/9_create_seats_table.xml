@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="movie_room"/>
+    </preConditions>
+
+    <changeSet id="create-seats-table" author="OlgaKorolko">
+        <createTable tableName="seat">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="row_number" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="place_number" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_room_id" type="bigint">
+                <constraints foreignKeyName="fk_seats_movie_rooms" references="movie_room(id)" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

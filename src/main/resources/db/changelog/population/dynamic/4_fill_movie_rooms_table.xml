@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="movie_room"/>
+        <tableIsEmpty tableName="movie_room"/>
+    </preConditions>
+
+    <changeSet id="fill-table-movie-rooms" author="OlgaKorolko">
+        <insert tableName="movie_room">
+            <column name="capacity" value="3"/>
+            <column name="room_type_id" value="1"/>
+            <column name="cinema_id" value="1"/>
+        </insert>
+        <insert tableName="movie_room">
+            <column name="capacity" value="4"/>
+            <column name="room_type_id" value="2"/>
+            <column name="cinema_id" value="1"/>
+        </insert>
+        <insert tableName="movie_room">
+            <column name="capacity" value="5"/>
+            <column name="room_type_id" value="1"/>
+            <column name="cinema_id" value="1"/>
+        </insert>
+        <insert tableName="movie_room">
+            <column name="capacity" value="3"/>
+            <column name="room_type_id" value="2"/>
+            <column name="cinema_id" value="2"/>
+        </insert>
+        <insert tableName="movie_room">
+            <column name="capacity" value="4"/>
+            <column name="room_type_id" value="1"/>
+            <column name="cinema_id" value="2"/>
+        </insert>
+        <insert tableName="movie_room">
+            <column name="capacity" value="3"/>
+            <column name="room_type_id" value="1"/>
+            <column name="cinema_id" value="3"/>
+        </insert>
+        <insert tableName="movie_room">
+            <column name="capacity" value="3"/>
+            <column name="room_type_id" value="1"/>
+            <column name="cinema_id" value="3"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

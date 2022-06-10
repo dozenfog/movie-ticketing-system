@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="cinema"/>
+        <tableIsEmpty tableName="cinema"/>
+    </preConditions>
+
+    <changeSet id="fill-table-cinemas" author="OlgaKorolko">
+        <insert tableName="cinema">
+            <column name="name" value="Pathé Tuschinski"/>
+            <column name="address" value="Reguliersbreestraat 26-34, 1017 CN"/>
+            <column name="city_id" value="2"/>
+            <column name="email" value="sayd_hsn28@yahoo.com"/>
+            <column name="phone" value="+31885152050"/>
+        </insert>
+        <insert tableName="cinema">
+            <column name="name" value="Grand Rex"/>
+            <column name="address" value="1 Bd Poissonnière, 75002"/>
+            <column name="city_id" value="7"/>
+            <column name="email" value="tubopecauwa-7103@yopmail.com"/>
+            <column name="phone" value="+65415412504"/>
+        </insert>
+        <insert tableName="cinema">
+            <column name="name" value="Hayden Orpheum Picture Palace"/>
+            <column name="address" value="380 Military Rd, Cremorne NSW 2090"/>
+            <column name="city_id" value="10"/>
+            <column name="email" value="vincent_mensing72@hotmail.com"/>
+            <column name="phone" value="+61299084344"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

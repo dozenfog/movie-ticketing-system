@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="orders"/>
+        <tableIsEmpty tableName="orders"/>
+    </preConditions>
+
+    <changeSet id="fill-table-orders" author="OlgaKorolko">
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T12:34:22"/>
+            <column name="overall_price" value="14.5"/>
+            <column name="user_id" value="1"/>
+            <column name="order_status" value="3"/>
+            <column name="event_id" value="1"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-03-23T11:12:12"/>
+            <column name="overall_price" value="6.0"/>
+            <column name="user_id" value="2"/>
+            <column name="order_status" value="1"/>
+            <column name="event_id" value="2"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="5.5"/>
+            <column name="user_id" value="3"/>
+            <column name="order_status" value="3"/>
+            <column name="event_id" value="6"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="5.0"/>
+            <column name="user_id" value="4"/>
+            <column name="order_status" value="3"/>
+            <column name="event_id" value="7"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="10.5"/>
+            <column name="user_id" value="5"/>
+            <column name="order_status" value="3"/>
+            <column name="event_id" value="6"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="6.0"/>
+            <column name="user_id" value="3"/>
+            <column name="order_status" value="0"/>
+            <column name="event_id" value="5"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="14.5"/>
+            <column name="user_id" value="2"/>
+            <column name="order_status" value="2"/>
+            <column name="event_id" value="4"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-02-23T23:00:00"/>
+            <column name="overall_price" value="6.0"/>
+            <column name="user_id" value="1"/>
+            <column name="order_status" value="3"/>
+            <column name="event_id" value="2"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="6"/>
+            <column name="user_id" value="4"/>
+            <column name="order_status" value="0"/>
+            <column name="event_id" value="8"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="6"/>
+            <column name="user_id" value="4"/>
+            <column name="order_status" value="0"/>
+            <column name="event_id" value="3"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-22T23:21:12"/>
+            <column name="overall_price" value="14.5"/>
+            <column name="user_id" value="3"/>
+            <column name="order_status" value="3"/>
+            <column name="event_id" value="1"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-21T13:45:54"/>
+            <column name="overall_price" value="5"/>
+            <column name="user_id" value="5"/>
+            <column name="order_status" value="1"/>
+            <column name="event_id" value="1"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="5"/>
+            <column name="user_id" value="2"/>
+            <column name="order_status" value="0"/>
+            <column name="event_id" value="3"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="creation_date_time" value="2022-01-23T23:00:00"/>
+            <column name="overall_price" value="5"/>
+            <column name="user_id" value="2"/>
+            <column name="order_status" value="3"/>
+            <column name="event_id" value="7"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

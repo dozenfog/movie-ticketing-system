@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="movie"/>
+        <tableIsEmpty tableName="movie"/>
+    </preConditions>
+
+    <changeSet id="fill-table-movies" author="OlgaKorolko">
+        <insert tableName="movie">
+            <column name="duration_in_minutes" value="108"/>
+            <column name="name" value="Black Swan"/>
+            <column name="description" value="Nina, a ballerina, gets the chance to play the White Swan, Princess Odette.
+            But she finds herself slipping into madness when Thomas, the artistic director, decides that Lily might fit the role better."/>
+            <column name="price" value="3.5"/>
+            <column name="age_rating" value="0"/>
+            <column name="rating" value="8"/>
+        </insert>
+        <insert tableName="movie">
+            <column name="duration_in_minutes" value="119"/>
+            <column name="name" value="The Favourite"/>
+            <column name="description" value="In early 18th-century England, the status quo at the court is upset when a new servant arrives
+        and endears herself to a frail Queen Anne."/>
+            <column name="price" value="3"/>
+            <column name="age_rating" value="3"/>
+            <column name="rating" value="9.7"/>
+        </insert>
+        <insert tableName="movie">
+            <column name="duration_in_minutes" value="130"/>
+            <column name="name" value="Call Me by Your Name"/>
+            <column name="description" value="Elio, a teenager, develops feelings for Oliver, his father's temporary assistant.
+        Although their relationship is temporary, Elio realises his sexual orientation and tries to come to terms with
+        it."/>
+            <column name="price" value="6"/>
+            <column name="age_rating" value="4"/>
+            <column name="rating" value="7.8"/>
+        </insert>
+        <insert tableName="movie">
+            <column name="duration_in_minutes" value="90"/>
+            <column name="name" value="A Quiet Place"/>
+            <column name="description" value="A family struggles for survival in a world where most humans have been killed by blind but
+        noise-sensitive creatures. They are forced to communicate in sign language to keep the creatures at
+        bay."/>
+            <column name="price" value="2.5"/>
+            <column name="age_rating" value="2"/>
+            <column name="rating" value="6.1"/>
+        </insert>
+        <insert tableName="movie">
+            <column name="duration_in_minutes" value="103"/>
+            <column name="name" value="Norbit"/>
+            <column name="description" value="A meek Norbit rediscovers his love for a childhood sweetheart, but his mean wife is determined not to
+        let him go till she wrests control of a restaurant from his foster father."/>
+            <column name="price" value="4.1"/>
+            <column name="age_rating" value="0"/>
+            <column name="rating" value="3.4"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

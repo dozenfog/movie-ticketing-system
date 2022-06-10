@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="room_type"/>
+        <tableIsEmpty tableName="room_type"/>
+    </preConditions>
+
+    <changeSet id="fill-table-room-types" author="OlgaKorolko">
+        <insert tableName="room_type">
+            <column name="name" value="STANDARD"/>
+            <column name="seat_price" value="2.5"/>
+        </insert>
+        <insert tableName="room_type">
+            <column name="name" value="PREMIUM"/>
+            <column name="seat_price" value="6"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

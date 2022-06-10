@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="seat"/>
+        <tableIsEmpty tableName="seat"/>
+    </preConditions>
+
+    <changeSet id="fill-table-seats" author="OlgaKorolko">
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="1"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="1"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="3"/>
+            <column name="movie_room_id" value="1"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="2"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="2"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="2"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="2"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="2"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="2"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="3"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="3"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="3"/>
+            <column name="movie_room_id" value="3"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="4"/>
+            <column name="movie_room_id" value="3"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="5"/>
+            <column name="movie_room_id" value="3"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="4"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="4"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="3"/>
+            <column name="movie_room_id" value="4"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="5"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="5"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="2"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="5"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="2"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="5"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="6"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="6"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="3"/>
+            <column name="movie_room_id" value="6"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="1"/>
+            <column name="movie_room_id" value="7"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="2"/>
+            <column name="movie_room_id" value="7"/>
+        </insert>
+        <insert tableName="seat">
+            <column name="row_number" value="1"/>
+            <column name="place_number" value="3"/>
+            <column name="movie_room_id" value="7"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

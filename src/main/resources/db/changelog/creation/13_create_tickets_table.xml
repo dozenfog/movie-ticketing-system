@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="seat"/>
+        <tableExists tableName="orders"/>
+    </preConditions>
+
+    <changeSet id="create-tickets-table" author="OlgaKorolko">
+        <createTable tableName="ticket">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="price" type="number(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="seat_id" type="bigint">
+                <constraints foreignKeyName="fk_tickets_seats" references="seat(id)" nullable="false"/>
+            </column>
+            <column name="order_id" type="bigint">
+                <constraints foreignKeyName="fk_tickets_orders" references="orders(id)" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
