@@ -18,6 +18,7 @@ public interface UserMapper {
     UserOutDTO toDto(User user);
 
     @Mapping(source = "user.city", target = "city")
+    @Mapping(source = "user.id", target = "id")
     UserDetailsOutDTO toDetailsDto(User user, Weather weather);
 
     @Mapping(target = "password", qualifiedByName = "encodePassword")

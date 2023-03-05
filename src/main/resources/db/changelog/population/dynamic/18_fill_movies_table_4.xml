@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="movie"/>
+        <tableIsEmpty tableName="movie"/>
+    </preConditions>
+
+    <changeSet id="fill-table-movies-back-image-url" author="OlgaKorolko">
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMjA3MzA5MzYwNl5BMl5BanBnXkFtZTcwMzg3ODIxNA@@._V1_.jpg"/>
+            <where>id = 1</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMTAwNjAxNzc5MTNeQTJeQWpwZ15BbWU4MDU0OTEwODYz._V1_.jpg"/>
+            <where>id = 2</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMTY1MjM4NDYyMF5BMl5BanBnXkFtZTgwOTQ5NTIxNDM@._V1_.jpg"/>
+            <where>id = 3</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BNTk3NDYyMDE0NF5BMl5BanBnXkFtZTgwOTA1MzQxNTM@._V1_.jpg"/>
+            <where>id = 4</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMjE3MjkxMjI4NV5BMl5BanBnXkFtZTYwMjQ3Mzk2._V1_FMjpg_UX485_.jpg"/>
+            <where>id = 5</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMTk1ODY0NDg2M15BMl5BanBnXkFtZTcwNTU2MTk2Mw@@._V1_.jpg"/>
+            <where>id = 6</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMTgyOTQ4NjEzNF5BMl5BanBnXkFtZTgwODY1MTMyMDE@._V1_FMjpg_UX1050_.jpg"/>
+            <where>id = 7</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BYjFiNDM5OGItYmM5YS00ZjIxLThhNzEtOGRmNmZlYTc3ZjJiXkEyXkFqcGdeQXVyMTIwODk1NTQ@._V1_.jpg"/>
+            <where>id = 8</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BZDY1ZGY0MGQtNDhjNi00OGUyLTg4YTAtNWNlNTkyYzJjNTdjXkEyXkFqcGdeQXVyMDc2NTEzMw@@._V1_FMjpg_UX1280_.jpg"/>
+            <where>id = 9</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMjA4NTU3MDc2N15BMl5BanBnXkFtZTgwMDgyMTgyMjI@._V1_FMjpg_UX1200_.jpg"/>
+            <where>id = 10</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMjE0MjY2OTA2OV5BMl5BanBnXkFtZTcwMTg3Nzk3Mg@@._V1_FMjpg_UX700_.jpg"/>
+            <where>id = 11</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMjE2NDQ4NjMzNV5BMl5BanBnXkFtZTcwMzQ3NDY3Mw@@._V1_FMjpg_UX1023_.jpg"/>
+            <where>id = 12</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BNGNmOTNlMzItNzJjYi00MTM4LWIyYzktOGRlOTY1NzQ5MjFhXkEyXkFqcGdeQXVyODUzMDY0NTE@._V1_.jpg"/>
+            <where>id = 13</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BZmIzZmQwMDktYWQ3Yy00ODBmLTk5ZDUtMjYwMjdhYmQ0YTllXkEyXkFqcGdeQXVyMTY4MjQ0NzU@._V1_.jpg"/>
+            <where>id = 14</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BOTE3MmNhZDktNDgxYS00N2E1LTgzOWQtMjEwMDI1MzU0M2ExXkEyXkFqcGdeQXVyMTIwODk1NTQ@._V1_.jpg"/>
+            <where>id = 15</where>
+        </update>
+        <update tableName="movie">
+            <column name="background_image_url" value="https://m.media-amazon.com/images/M/MV5BMjIzNjEyNTAzOF5BMl5BanBnXkFtZTgwNDI1MDMzNTE@._V1_.jpg"/>
+            <where>id = 16</where>
+        </update>
+
+    </changeSet>
+
+</databaseChangeLog>

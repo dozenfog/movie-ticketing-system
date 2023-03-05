@@ -16,13 +16,13 @@
 
     <properties>
         <java.version>17</java.version>
-        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <org.mapstruct.processor.version>1.4.2.Final</org.mapstruct.processor.version>
         <org.projectlombok.mapstruct-binding.version>0.2.0</org.projectlombok.mapstruct-binding.version>
         <org.projectlombok.version>1.18.22</org.projectlombok.version>
         <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
-        <h2.db.version>2.1.212</h2.db.version>
+        <h2.db.version>2.1.214</h2.db.version>
         <liquibase.version>4.9.1</liquibase.version>
         <liquibase-hibernate5.version>4.9.1</liquibase-hibernate5.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
@@ -32,8 +32,8 @@
         </diff-out-change-log>
         <javax-jaxb.version>2.3.1</javax-jaxb.version>
         <maven.build.timestamp.format>yyyyMMdd-HHmmssSSS</maven.build.timestamp.format>
-        <springdoc.openapi.ui>1.6.8</springdoc.openapi.ui>
-        <java-jwt.version>3.19.2</java-jwt.version>
+        <springdoc.openapi.ui>1.6.10</springdoc.openapi.ui>
+        <java-jwt.version>4.0.0</java-jwt.version>
     </properties>
 
     <dependencies>

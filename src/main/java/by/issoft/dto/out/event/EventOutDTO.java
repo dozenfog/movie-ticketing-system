@@ -7,13 +7,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class EventOutDTO {
+    private Long id;
     private LocalDateTime startDateTime;
     private MovieOutDTO movie;
     private EventStatus eventStatus;
     private MovieRoomOutDTO movieRoom;
+    private List<Long> boughtTicketIds;
 }

@@ -14,5 +14,6 @@ public interface MovieRoomMapper {
     @Mapping(target = "events", expression = "java(new ArrayList<>())")
     MovieRoom fromDto(MovieRoomInDTO movieRoomInDTO);
 
+    @Mapping(source = "cinema.name", target = "cinemaName")
     MovieRoomOutDTO toDto(MovieRoom movieRoom);
 }

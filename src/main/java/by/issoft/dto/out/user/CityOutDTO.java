@@ -1,4 +1,4 @@
-package by.issoft.dto.out.cinema;
+package by.issoft.dto.out.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SeatOutDTO {
+public class CityOutDTO {
     private Long id;
-    private int rowNumber;
-    private int placeNumber;
+    private String name;
 }

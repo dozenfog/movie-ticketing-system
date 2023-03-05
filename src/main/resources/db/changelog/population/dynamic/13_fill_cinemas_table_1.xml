@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="cinema"/>
+        <tableIsEmpty tableName="cinema"/>
+    </preConditions>
+
+    <changeSet id="fill-table-cinemas-1" author="OlgaKorolko">
+        <insert tableName="cinema">
+            <column name="name" value="Cine Aegli Summer Cinema"/>
+            <column name="address" value="Κήπος Ζαππείου Μεγάρου, Athina 105 57"/>
+            <column name="city_id" value="3"/>
+            <column name="email" value="cnsdkj_wdk@gmail.com"/>
+            <column name="phone" value="+302103369369"/>
+        </insert>
+        <insert tableName="cinema">
+            <column name="name" value="Kino Lucerna"/>
+            <column name="address" value="Vodičkova 704, 110 00 Nové Město, Czechia"/>
+            <column name="city_id" value="5"/>
+            <column name="email" value="fsljkdvn-435@yopmail.com"/>
+            <column name="phone" value="+420224216972"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

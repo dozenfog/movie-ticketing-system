@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="movie"/>
+        <tableIsEmpty tableName="movie"/>
+    </preConditions>
+
+    <changeSet id="fill-table-movies-image-urls" author="OlgaKorolko">
+        <update tableName="movie">
+            <column name="image_url" value="https://m.media-amazon.com/images/I/615yWgAir2L._AC_SY679_.jpg"/>
+            <where>id = 1</where>
+        </update>
+        <update tableName="movie">
+            <column name="image_url" value="https://m.media-amazon.com/images/I/81d+sbLTuZL._AC_SL1500_.jpg"/>
+            <where>id = 2</where>
+        </update>
+        <update tableName="movie">
+            <column name="image_url" value="https://m.media-amazon.com/images/M/MV5BNDk3NTEwNjc0MV5BMl5BanBnXkFtZTgwNzYxNTMwMzI@._V1_.jpg"/>
+            <where>id = 3</where>
+        </update>
+        <update tableName="movie">
+            <column name="image_url" value="https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_.jpg"/>
+            <where>id = 4</where>
+        </update>
+        <update tableName="movie">
+            <column name="image_url" value="https://m.media-amazon.com/images/M/MV5BMTI4NDE4MjgyNV5BMl5BanBnXkFtZTcwMTQwODc0MQ@@._V1_FMjpg_UX1000_.jpg"/>
+            <where>id = 5</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

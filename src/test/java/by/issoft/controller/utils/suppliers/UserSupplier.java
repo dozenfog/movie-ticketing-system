@@ -303,12 +303,6 @@ public class UserSupplier {
         return userUpdateInDTO;
     }
 
-    public static UserUpdateInDTO getUpdateUserInvalidBirthDate() {
-        UserUpdateInDTO userUpdateInDTO = new UserUpdateInDTO();
-        userUpdateInDTO.setBirthDate(LocalDate.MAX);
-        return userUpdateInDTO;
-    }
-
     public static UserUpdateInDTO getUpdateUserPayload() {
         UserUpdateInDTO userUpdateInDTO = new UserUpdateInDTO();
         userUpdateInDTO.setFirstName("New");

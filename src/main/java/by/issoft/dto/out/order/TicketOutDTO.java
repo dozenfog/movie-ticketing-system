@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TicketOutDTO {
+    private Long id;
     private BigDecimal price;
     private OrderOutDTO order;
     private SeatOutDTO seat;

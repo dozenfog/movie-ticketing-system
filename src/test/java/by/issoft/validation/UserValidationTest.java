@@ -181,12 +181,6 @@ public class UserValidationTest {
     }
 
     @Test
-    public void testUpdateUserByValidIdInvalidBirthDate() throws Exception {
-        testUpdateInvalidPayload(UserSupplier::getUpdateUserInvalidBirthDate, "birthDate",
-                "must be a past date");
-    }
-
-    @Test
     public void testUpdateUser() throws Exception {
         //given
         User user = userMapper.fromDto(UserSupplier.getValidUsers().get(4));

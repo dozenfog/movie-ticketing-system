@@ -1,6 +1,7 @@
 package by.issoft.dto.out.event;
 
 import by.issoft.domain.event.AgeRating;
+import by.issoft.domain.event.MovieImage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,10 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MovieOutDTO {
+    private Long id;
     private String name;
     private String description;
     private AgeRating ageRating;
     private double rating;
     private int durationInMinutes;
+    private String imageUrl;
     private List<GenreOutDTO> genres;
+    private List<MovieImage> movieImages;
 }

@@ -32,7 +32,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tickets")
-@RolesAllowed(Role.Fields.USER)
+@RolesAllowed({Role.Fields.USER, Role.Fields.ADMIN})
 @RequiredArgsConstructor
 public class TicketController {
     private final TicketService ticketService;

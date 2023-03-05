@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="add-movie-code-and-secure-id-column" author="OlgaKorolko">
+        <addColumn tableName="movie">
+            <column name="code" type="varchar(100)"/>
+            <column name="secure_id" type="varchar(40)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet  id="add-uc-code-column-movie" author="OlgaKorolko">
+        <addUniqueConstraint columnNames="code"
+                             constraintName="uc_movie_code"
+                             tableName="movie"/>
+    </changeSet>
+    <changeSet id="add-uc-secure-id-column-movie" author="OlgaKorolko">
+        <addUniqueConstraint columnNames="secure_id"
+                             constraintName="uc_movie_secure_id"
+                             tableName="movie"/>
+    </changeSet>
+</databaseChangeLog>

@@ -3,7 +3,6 @@ package by.issoft.dto.in.event;
 import by.issoft.domain.event.AgeRating;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
@@ -38,6 +37,12 @@ public class MovieInDTO {
     @Positive
     @Max(value = 10, message = "Movie rating should be between 0 and 10")
     private double rating;
+
+    private String imageUrl;
+
+    @NotNull
+    @NotEmpty
+    private List<String> imagesUrls;
 
     @NotNull
     @NotEmpty

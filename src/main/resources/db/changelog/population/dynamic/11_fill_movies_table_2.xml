@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <preConditions onFail="WARN">
+        <tableExists tableName="movie"/>
+        <tableIsEmpty tableName="movie"/>
+    </preConditions>
+
+    <changeSet id="fill-table-movies-code-and-secure-ids" author="OlgaKorolko">
+        <update tableName="movie">
+            <column name="code" value="black-swan"/>
+            <column name="secure_id" value="bd8faf0d-ce1b-4b74-96b4-26a9f8c2a1e9"/>
+            <where>id = 1</where>
+        </update>
+        <update tableName="movie">
+            <column name="code" value="the-favourite"/>
+            <column name="secure_id" value="6546b9ba-c365-4add-a361-14bcecf603d1"/>
+            <where>id = 2</where>
+        </update>
+        <update tableName="movie">
+            <column name="code" value="call-me-by-your-name"/>
+            <column name="secure_id" value="0ec49745-6b33-41bb-a111-4a7324616e0d"/>
+            <where>id = 3</where>
+        </update>
+        <update tableName="movie">
+            <column name="code" value="a-quiet-place"/>
+            <column name="secure_id" value="0afb90b5-9aa3-4315-a413-2db782d6437f"/>
+            <where>id = 4</where>
+        </update>
+        <update tableName="movie">
+            <column name="code" value="norbit"/>
+            <column name="secure_id" value="3530efa4-2249-4aab-9f3d-af3e405e032f"/>
+            <where>id = 5</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

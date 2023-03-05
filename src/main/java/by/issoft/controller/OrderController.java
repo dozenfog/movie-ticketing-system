@@ -33,7 +33,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
-@RolesAllowed(Role.Fields.USER)
+@RolesAllowed({Role.Fields.USER, Role.Fields.ADMIN})
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;

@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderOutDTO {
+    private Long id;
     private LocalDateTime creationDateTime;
     private BigDecimal overallPrice;
     private UserOutDTO user;

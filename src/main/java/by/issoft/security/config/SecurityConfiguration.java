@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import static by.issoft.security.Constants.LOGIN_PATH;
+import static by.issoft.security.Constants.LOGOUT_PATH;
 
 @Configuration
 @EnableWebSecurity
@@ -46,6 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(authenticationManagerBean());
         authenticationFilter.setFilterProcessesUrl(LOGIN_PATH);
         http
+                .cors().and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -54,7 +56,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilter(authenticationFilter)
                 .addFilterBefore(new AuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
+                .and().formLogin().permitAll().loginPage(LOGIN_PATH).loginProcessingUrl(LOGIN_PATH)
+                .and().logout().permitAll().logoutUrl(LOGOUT_PATH).invalidateHttpSession(true);
     }
 
     @Bean
