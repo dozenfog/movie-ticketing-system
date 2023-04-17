@@ -1,12 +1,15 @@
 package by.issoft.controller.admin;
 
 import by.issoft.domain.user.Role;
+import by.issoft.domain.weather.Weather;
 import by.issoft.dto.in.user.UserUpdateInDTO;
 import by.issoft.dto.mapper.user.UserMapper;
 import by.issoft.dto.out.ExceptionDTO;
+import by.issoft.dto.out.user.UserDetailsOutDTO;
 import by.issoft.dto.out.user.UserOutDTO;
 import by.issoft.exception.NotFoundException;
 import by.issoft.service.UserService;
+import by.issoft.service.WeatherService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -39,6 +42,7 @@ import java.util.stream.Collectors;
 public class AdminUserController {
     private final UserService userService;
     private final UserMapper userMapper;
+    private final WeatherService weatherService;
 
     @Operation(summary = "Get a list of all users")
     @ApiResponses({
@@ -73,10 +77,13 @@ public class AdminUserController {
             )
     })
     @GetMapping("/{id}")
-    public UserOutDTO getUserById(@Parameter(description = "Id of user to be searched")
+    public UserDetailsOutDTO getUserById(@Parameter(description = "Id of user to be searched")
                                   @PathVariable Long id) {
         return userService.findById(id)
-                .map(userMapper::toDto)
+                .map(user -> {
+                    Weather currentWeather = weatherService.findByCity(user.getCity());
+                    return userMapper.toDetailsDto(user, currentWeather);
+                })
                 .orElseThrow(() -> new NotFoundException("User with id " + id + " was not found."));
     }
 
@@ -151,16 +158,18 @@ public class AdminUserController {
             )
     })
     @GetMapping("/top/{cinemaId}")
-    public UserOutDTO getTopActiveByMovieRoomTickets(@Parameter(description = "Id of cinema to be searched by")
+    public Optional<UserOutDTO> getTopActiveByMovieRoomTickets(@Parameter(description = "Id of cinema to be searched by")
                                                      @PathVariable Long cinemaId,
                                                      @Parameter(description = "Date from which to start searching")
                                                      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
                                                              Optional<LocalDate> startDate,
-                                                     @Parameter(description = "Date until which to finish searching")
+                                                     @Parameter(description = "Date until which to search")
                                                      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
                                                              Optional<LocalDate> endDate) {
-        return userMapper.toDto(userService.findTopByMovieRoomTickets(cinemaId, startDate.orElse(LocalDate.EPOCH),
-                endDate.orElse(LocalDate.EPOCH.plusYears(LocalDate.EPOCH.getYear()))).get(0)
-        );
+        return userService.findTopByMovieRoomTickets(cinemaId, startDate.orElse(LocalDate.EPOCH),
+                endDate.orElse(LocalDate.EPOCH.plusYears(LocalDate.EPOCH.getYear())))
+                .stream()
+                .findFirst()
+                .map(userMapper::toDto);
     }
 }
