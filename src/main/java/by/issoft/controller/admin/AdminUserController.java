@@ -78,7 +78,7 @@ public class AdminUserController {
     })
     @GetMapping("/{id}")
     public UserDetailsOutDTO getUserById(@Parameter(description = "Id of user to be searched")
-                                  @PathVariable Long id) {
+                                         @PathVariable Long id) {
         return userService.findById(id)
                 .map(user -> {
                     Weather currentWeather = weatherService.findByCity(user.getCity());
@@ -136,7 +136,7 @@ public class AdminUserController {
     })
     @DeleteMapping("/{id}")
     public void deleteUserById(@Parameter(description = "Id of user to be deleted")
-                           @PathVariable Long id) {
+                               @PathVariable Long id) {
         userService.delete(id);
     }
 
@@ -158,7 +158,7 @@ public class AdminUserController {
             )
     })
     @GetMapping("/top/{cinemaId}")
-    public Optional<UserOutDTO> getTopActiveByMovieRoomTickets(@Parameter(description = "Id of cinema to be searched by")
+    public UserOutDTO getTopActiveByMovieRoomTickets(@Parameter(description = "Id of cinema to be searched by")
                                                      @PathVariable Long cinemaId,
                                                      @Parameter(description = "Date from which to start searching")
                                                      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -167,9 +167,10 @@ public class AdminUserController {
                                                      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
                                                              Optional<LocalDate> endDate) {
         return userService.findTopByMovieRoomTickets(cinemaId, startDate.orElse(LocalDate.EPOCH),
-                endDate.orElse(LocalDate.EPOCH.plusYears(LocalDate.EPOCH.getYear())))
+                        endDate.orElse(LocalDate.EPOCH.plusYears(LocalDate.EPOCH.getYear())))
                 .stream()
                 .findFirst()
-                .map(userMapper::toDto);
+                .map(userMapper::toDto)
+                .orElseThrow(() -> new NotFoundException("Not enough orders to calculate top user for cinema with id " + cinemaId));
     }
 }

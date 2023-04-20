@@ -1,7 +1,6 @@
 package by.issoft.repository;
 
 import by.issoft.domain.order.Order;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

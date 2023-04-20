@@ -10,15 +10,10 @@ import java.util.Optional;
 
 public interface UserRepository extends CommonRepository<User> {
     @Query("""
-            select o.user from Ticket as t
-            inner join t.order as o
-            inner join o.event as e
-            inner join e.movieRoom as mv
-            inner join mv.cinema as c
-            where c.id = :cinemaId
-            and e.startDateTime >= :startDateTime
-            and e.startDateTime <= :endDateTime
-            group by o.user
+            select t.order.user from Ticket as t
+            where t.order.event.movieRoom.cinema.id = :cinemaId
+            and t.order.event.startDateTime between :startDateTime and :endDateTime
+            group by t.order.user
             order by count(t.id) desc
             """)
     List<User> findTopByMovieRoomTickets(@Param("cinemaId") Long cinemaId,

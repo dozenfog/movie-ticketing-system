@@ -5,6 +5,7 @@ import by.issoft.dto.mapper.order.TicketMapper;
 import by.issoft.dto.out.ExceptionDTO;
 import by.issoft.dto.out.order.TicketOutDTO;
 import by.issoft.exception.NotFoundException;
+import by.issoft.service.OrderService;
 import by.issoft.service.TicketService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 public class AdminTicketController {
     private final TicketService ticketService;
     private final TicketMapper ticketMapper;
+    private final OrderService orderService;
 
     @Operation(summary = "Get a list of all tickets")
     @ApiResponses({
@@ -69,5 +71,31 @@ public class AdminTicketController {
         return ticketService.findById(id)
                 .map(ticketMapper::toDto)
                 .orElseThrow(() -> new NotFoundException("Ticket with id " + id + " was not found."));
+    }
+
+    @Operation(summary = "Get tickets by order id")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found tickets by order id",
+                    content = {
+                            @Content(array = @ArraySchema(schema = @Schema(implementation = TicketOutDTO.class)))
+                    }),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Order not found",
+                    content = {
+                            @Content(schema = @Schema(implementation = ExceptionDTO.class))
+                    }
+            )
+    })
+    @GetMapping("/order/{id}")
+    public List<TicketOutDTO> getTicketsByOrderId(@Parameter(description = "Id of order tickets of which to be searched by")
+                                                  @PathVariable Long id) {
+        if (orderService.existsById(id)) {
+            return ticketService.findByOrderId(id).stream()
+                    .map(ticketMapper::toDto)
+                    .toList();
+        } else throw new NotFoundException("Order with id " + id + " was not found.");
     }
 }
