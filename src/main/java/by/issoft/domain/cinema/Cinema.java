@@ -45,9 +45,8 @@ public class Cinema extends AbstractEntity {
     @Column(nullable = false, length = 21)
     private String phone;
 
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "cinema_id")
-    @JsonIgnore
+    @OneToMany(orphanRemoval = true, mappedBy = "cinema")
     @Builder.Default
+    //@JsonIgnore
     private List<MovieRoom> movieRooms = new ArrayList<>();
 }

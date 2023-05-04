@@ -13,7 +13,7 @@ public interface OrderRepository extends CommonRepository<Order> {
 
     @Modifying
     @Query("""
-            update Order o set o.overallPrice = (select sum(t.price) from Ticket t where t.order.id = :id) where o.id = :id
+            update Order o set o.overallPrice = (select coalesce(sum(t.price), 0) from Ticket t where t.order.id = :id) where o.id = :id
             """)
     void updateOverallPriceById(@Param("id") Long id);
 

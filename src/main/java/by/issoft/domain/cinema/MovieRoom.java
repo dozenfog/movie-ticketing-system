@@ -3,23 +3,10 @@ package by.issoft.domain.cinema;
 import by.issoft.domain.AbstractEntity;
 import by.issoft.domain.event.Event;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,12 +28,12 @@ public class MovieRoom extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "cinema_id")
+    @JsonIgnore
     private Cinema cinema;
 
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "movie_room_id")
-    @JsonIgnore
+    @OneToMany(orphanRemoval = true, mappedBy = "movieRoom")
     @Builder.Default
+    //@JsonIgnore
     private List<Seat> seats = new ArrayList<>();
 
     @OneToMany(mappedBy = "movieRoom", orphanRemoval = true)

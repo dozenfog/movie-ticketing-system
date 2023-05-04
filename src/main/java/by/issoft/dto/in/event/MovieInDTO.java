@@ -24,7 +24,7 @@ public class MovieInDTO {
     @Size(max = 100, message = "Name is too long")
     private String name;
 
-    @Size(max = 1000, message = "First name is too long")
+    @Size(max = 1000, message = "Description is too long")
     private String description;
 
     @Positive
@@ -38,6 +38,8 @@ public class MovieInDTO {
     @Max(value = 10, message = "Movie rating should be between 0 and 10")
     private double rating;
 
+    @NotNull
+    @NotEmpty
     private String imageUrl;
 
     @NotNull

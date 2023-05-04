@@ -8,9 +8,11 @@ public class TestConstants {
     public static final String ADMIN_MOVIE_MAPPING = "/admin/movies/";
     public static final String PUBLIC_MOVIE_MAPPING = "/movies/";
     public static final String ADMIN_ORDER_MAPPING = "/admin/orders/";
+    public static final String PUBLIC_ORDER_MAPPING = "/orders/";
     public static final String PAYMENT_PATH = "/payment";
     public static final String CANCELLATION_PATH = "/cancellation";
     public static final String ADMIN_TICKET_MAPPING = "/admin/tickets/";
+    public static final String PUBLIC_TICKET_MAPPING = "/tickets/";
     public static final String ORDER_PATH = "order/";
     public static final String ADMIN_USER_MAPPING = "/admin/users/";
     public static final String PUBLIC_USER_SIGNUP_MAPPING = "/users/signup";

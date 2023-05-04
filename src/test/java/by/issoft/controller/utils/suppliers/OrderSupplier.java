@@ -12,7 +12,7 @@ public class OrderSupplier {
     public static Order getOrder() {
         return Order.builder()
                 .creationDateTime(LocalDateTime.parse("2022-01-08T12:30:00"))
-                .user(User.builder().id(1L).build())
+                .user(User.builder().id(1L).userName("test").build())
                 .event(Event.builder().id(1L).build())
                 .orderStatus(OrderStatus.CREATED)
                 .overallPrice(BigDecimal.ZERO)

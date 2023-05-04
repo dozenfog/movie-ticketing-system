@@ -2,6 +2,7 @@ package by.issoft.domain.user;
 
 import by.issoft.domain.AbstractEntity;
 import by.issoft.domain.order.Order;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -74,5 +75,6 @@ public class User extends AbstractEntity {
 
     @OneToMany(mappedBy = "user")
     @Builder.Default
+    @JsonIgnore
     private List<Order> orders = new ArrayList<>();
 }

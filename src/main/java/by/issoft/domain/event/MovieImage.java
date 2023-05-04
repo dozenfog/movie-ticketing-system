@@ -8,13 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@ToString
+@ToString(exclude = "movie")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,4 +21,8 @@ import javax.persistence.Table;
 public class MovieImage extends AbstractEntity {
     @Column(unique = true, nullable = false, length = 200)
     private String url;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 }

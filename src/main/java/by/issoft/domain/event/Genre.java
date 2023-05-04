@@ -1,6 +1,7 @@
 package by.issoft.domain.event;
 
 import by.issoft.domain.AbstractEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,6 +33,7 @@ public class Genre extends AbstractEntity {
     private String name;
 
     @ManyToMany(mappedBy = "genres")
+    @JsonIgnore
     @Builder.Default
     private List<Movie> movies = new ArrayList<>();
 }

@@ -14,20 +14,26 @@ public class MovieSupplier {
                 .durationInMinutes(123)
                 .price(BigDecimal.ONE)
                 .rating(5)
+                .imageUrl("vjldskcs")
                 .build();
     }
 
     public static String getMovieJson() {
         return "{" +
-                "\"durationInMinutes\": 123," +
+                "    \"durationInMinutes\": 123," +
                 "    \"name\": \"Movie 1\"," +
                 "    \"description\": \"Movie test 1\"," +
                 "    \"price\": 1," +
                 "    \"ageRating\": 0," +
                 "    \"rating\": 5," +
+                "    \"imageUrl\": \"vjldskcs\"," +
+                "    \"imagesUrls\": [" +
+                "        \"fjdks\"," +
+                "        \"djl\"" +
+                "    ]," +
                 "    \"genresIds\": [" +
-                "       1" +
-                "]" +
+                "        1" +
+                "    ]" +
                 "}";
     }
 }

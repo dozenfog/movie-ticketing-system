@@ -60,8 +60,7 @@ public class Movie extends AbstractEntity {
     @Builder.Default
     private List<Genre> genres = new ArrayList<>();
 
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "movie_id")
+    @OneToMany(orphanRemoval = true, mappedBy = "movie")
     @JsonIgnore
     @Builder.Default
     private List<MovieImage> movieImages = new ArrayList<>();

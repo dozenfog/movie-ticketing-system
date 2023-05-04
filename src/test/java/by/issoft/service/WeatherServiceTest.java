@@ -8,9 +8,15 @@ import by.issoft.externalapi.weather.dto.out.WeatherApiOutDTO;
 import by.issoft.service.utils.WeatherSupplier;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestExecutionListeners;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 import reactor.core.publisher.Mono;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -23,12 +29,29 @@ import static reactor.core.publisher.Mono.when;
         mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS,
         value = ResetMocksTestExecutionListener.class
 )
+@Testcontainers
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @SpringBootTest
 public class WeatherServiceTest {
     @Autowired
     private WeatherService weatherService;
     @Autowired
     private WeatherClient weatherClient;
+
+    @Container
+    public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:15.2")
+            .withReuse(true)
+            .withPassword("admin")
+            .withUsername("admin")
+            .withDatabaseName("ticketing-system-test")
+            .withInitScript("data.sql");
+
+    @DynamicPropertySource
+    static void postgresqlProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
+        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
+        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
+    }
 
     @Test
     public void testFindByCity() {

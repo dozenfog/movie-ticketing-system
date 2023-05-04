@@ -9,17 +9,20 @@ import by.issoft.repository.OrderRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static by.issoft.controller.utils.constants.TestConstants.ADMIN_ORDER_MAPPING;
-import static by.issoft.controller.utils.constants.TestConstants.CANCELLATION_PATH;
-import static by.issoft.controller.utils.constants.TestConstants.INVALID_ID;
-import static by.issoft.controller.utils.constants.TestConstants.PAYMENT_PATH;
+import static by.issoft.controller.utils.constants.TestConstants.*;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.startsWithIgnoringCase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,7 +37,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@WithMockUser(roles = {Role.Fields.ADMIN})
+@WithMockUser(roles = {Role.Fields.ADMIN, Role.Fields.USER}, username = "test")
+@Testcontainers
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class OrderControllerTest {
     @Autowired
     private WebApplicationContext context;
@@ -43,6 +48,21 @@ public class OrderControllerTest {
     private OrderRepository orderRepository;
 
     public static final String EXCEPTION_MESSAGE = "Order with id " + INVALID_ID + " was not found.";
+
+    @Container
+    public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:15.2")
+            .withReuse(true)
+            .withPassword("admin")
+            .withUsername("admin")
+            .withDatabaseName("ticketing-system-test")
+            .withInitScript("data.sql");
+
+    @DynamicPropertySource
+    static void postgresqlProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
+        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
+        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
+    }
 
     @BeforeEach
     public void setup() {
@@ -72,7 +92,7 @@ public class OrderControllerTest {
         Order order = OrderSupplier.getOrder();
         Order savedOrder = orderRepository.save(order);
 
-        mockMvc.perform(get(ADMIN_ORDER_MAPPING + savedOrder.getId()))
+        mockMvc.perform(get(PUBLIC_ORDER_MAPPING + savedOrder.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.orderStatus").value(savedOrder.getOrderStatus().name()));
@@ -82,7 +102,7 @@ public class OrderControllerTest {
 
     @Test
     public void testGetOrderByInvalidId() throws Exception {
-        mockMvc.perform(get(ADMIN_ORDER_MAPPING + INVALID_ID))
+        mockMvc.perform(get(PUBLIC_ORDER_MAPPING + INVALID_ID))
                 .andExpect(status().isNotFound())
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof NotFoundException))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -98,7 +118,7 @@ public class OrderControllerTest {
 
         final String requestContent = OrderSupplier.getOrderJson();
         //when
-        mockMvc.perform(post(ADMIN_ORDER_MAPPING)
+        mockMvc.perform(post(PUBLIC_ORDER_MAPPING)
                         .content(requestContent)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -121,7 +141,7 @@ public class OrderControllerTest {
         mockMvc.perform(delete(ADMIN_ORDER_MAPPING + id))
                 .andExpect(status().isOk());
 
-        mockMvc.perform(get(ADMIN_ORDER_MAPPING + id))
+        mockMvc.perform(get(PUBLIC_ORDER_MAPPING + id))
                 .andExpect(status().isNotFound());
     }
 
@@ -137,7 +157,7 @@ public class OrderControllerTest {
 
     @Test
     public void testPaymentForInvalidOrder() throws Exception {
-        mockMvc.perform(put(ADMIN_ORDER_MAPPING + INVALID_ID + PAYMENT_PATH)
+        mockMvc.perform(put(PUBLIC_ORDER_MAPPING + INVALID_ID + PAYMENT_PATH)
                         .content("{}")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -154,7 +174,7 @@ public class OrderControllerTest {
         Long id = orderRepository.save(order).getId();
 
         //when & then
-        mockMvc.perform(put(ADMIN_ORDER_MAPPING + id + PAYMENT_PATH))
+        mockMvc.perform(put(PUBLIC_ORDER_MAPPING + id + PAYMENT_PATH))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.creationDateTime").value(startsWithIgnoringCase("2022-01-08T12:30")))
@@ -165,7 +185,7 @@ public class OrderControllerTest {
 
     @Test
     public void testCancelInvalidOrder() throws Exception {
-        mockMvc.perform(put(ADMIN_ORDER_MAPPING + INVALID_ID + CANCELLATION_PATH)
+        mockMvc.perform(put(PUBLIC_ORDER_MAPPING + INVALID_ID + CANCELLATION_PATH)
                         .content("{}")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -182,7 +202,7 @@ public class OrderControllerTest {
         Long id = orderRepository.save(order).getId();
 
         //when & then
-        mockMvc.perform(put(ADMIN_ORDER_MAPPING + id + CANCELLATION_PATH))
+        mockMvc.perform(put(PUBLIC_ORDER_MAPPING + id + CANCELLATION_PATH))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.creationDateTime").value(startsWithIgnoringCase("2022-01-08T12:30")))

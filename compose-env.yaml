@@ -1,0 +1,11 @@
+version: '3'
+services:
+  db-ticketing-system:
+    image: postgres:15.2
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: ticketing-system
