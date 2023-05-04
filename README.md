@@ -2,7 +2,8 @@
 
 ### Tech stack
 * Spring Framework (Boot, Data, MVC, Security, WebFlux, AOP)
-* Mockito, Junit
+* Mockito, Junit, Testcontainers (Postgres)
 * Maven
-* MySQL
+* PostgreSQL
 * Liquibase (for migrations)
+* Docker
