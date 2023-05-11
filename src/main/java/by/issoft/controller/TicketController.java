@@ -1,5 +1,6 @@
 package by.issoft.controller;
 
+import by.issoft.domain.order.OrderStatus;
 import by.issoft.domain.order.Ticket;
 import by.issoft.domain.user.Role;
 import by.issoft.dto.in.order.TicketInDTO;
@@ -119,8 +120,9 @@ public class TicketController {
     public void deleteTicket(@Parameter(description = "Id of ticket to be deleted")
                              @PathVariable Long id,
                              Principal principal) {
-        if (ticketService.existsByIdAndAndUserName(id, principal.getName())) {
+        if (ticketService.findByIdAndUsername(id, principal.getName())
+                .map(ticket -> ticket.getOrder().getOrderStatus().equals(OrderStatus.CREATED)).isPresent()) {
             ticketService.delete(id);
-        } else throw new NotFoundException("Ticket with id " + id + " was not found.");
+        } else throw new NotFoundException("Ticket with id " + id + " was not found or not allowed to delete it.");
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 public interface TicketRepository extends CommonRepository<Ticket> {
     List<Ticket> findByOrderId(Long orderId);
@@ -24,4 +25,6 @@ public interface TicketRepository extends CommonRepository<Ticket> {
     BigDecimal calculateTicketPrice(@Param("orderId") Long orderId);
 
     boolean existsByIdAndOrderUserUserName(Long ticketId, String username);
+
+    Optional<Ticket> findByIdAndOrderUserUserName(Long ticketId, String username);
 }

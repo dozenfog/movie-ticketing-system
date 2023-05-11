@@ -35,6 +35,12 @@ public class TicketServiceImpl implements TicketService {
 
     @Audit
     @Override
+    public Optional<Ticket> findByIdAndUsername(Long ticketId, String username) {
+        return ticketRepository.findByIdAndOrderUserUserName(ticketId, username);
+    }
+
+    @Audit
+    @Override
     public List<Ticket> addTicketsToOrder(Long orderId, List<Ticket> tickets) {
         return orderService.findById(orderId)
                 .map(order -> tickets.stream().map(ticket -> {
